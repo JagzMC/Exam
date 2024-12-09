@@ -2,6 +2,9 @@ Shader "Custom/VertexColoring"
 {
     Properties
     {
+        _Color("Color", Color) = (1,1,1,1)
+        _MetallicTex("Metallic (R)", 2D) = "white" {}
+        _Metallic("Metallic", Range(0.0, 1.0)) = 0.0
         _MainTex ("Texture", 2D) = "white" {}
     }
     SubShader
@@ -26,6 +29,8 @@ Shader "Custom/VertexColoring"
                 float4 color: COLOR;
                 float2 uv : TEXCOORD0;
             };
+            TEXTURE2D(_MetallicTex);
+            SAMPLER(sampler_MetallicTex);
             TEXTURE2D(_MainTex);
             SAMPLER(sampler_MainTex);
 
